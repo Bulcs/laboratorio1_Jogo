@@ -2,10 +2,12 @@
 
 class jogadores
 {
-public:
+private:
 
 	int jogadores;
 	int n;
+
+public:
 
 	int getjogadores();
 	void setjogadores(int players);

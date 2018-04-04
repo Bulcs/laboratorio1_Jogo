@@ -7,23 +7,23 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
-	int i, jogadores,n,maior,menor,ultimo, vencedor;
+	int i,maior,players,numero,menor,ultimo, vencedor;
 	
 	/** LEITURA DE JOGADORES E O NUMERO LIMITE */
-
+	jogadores r;
 	cout << "Número de jogadores no game: ";
-	cin >> jogadores;
+	r.setjogadores( players);
 	cout << "\nNúmero a ser estabelecido: ";
-	cin >> n;
+	r.setn( numero);
 
 	/** VARIAVEIS CRIADAS DEPOIS DEVIDO A ATRIBUIÇAO POSTERIOR DOS VALORES */
 
-	int sn[jogadores] ;
-	int pontos[jogadores];
-	int contador_de_zero = jogadores;
-	int contador_desclassificacao = jogadores;
+	int sn[players] ;
+	int pontos[players];
+	int contador_de_zero = players;
+	int contador_desclassificacao = players;
 
-	menor = n;
+	menor = numero;
 	maior = 1;
 
 	/** TEMPO DA MAQUINA PARA AUXILIAR NA CRIAÇAO DO NUMERO ALEATORIO*/
@@ -32,7 +32,7 @@ int main(int argc, char const *argv[])
 
 	/** ZERANDO TODO OS PONTOS */
 
-	for(i=1;i<=jogadores;i++){
+	for(i=1;i<=players;i++){
 		pontos[i] = 0;
 	}
 
@@ -42,14 +42,14 @@ int main(int argc, char const *argv[])
 
 	/** REATRIBUIÇAO DE VALORES */
 
-	contador_de_zero = jogadores;
-	contador_desclassificacao = jogadores;
+	contador_de_zero = players;
+	contador_desclassificacao = players;
 
 	/** CRIAÇAO DO FOR PARA CALCULAR OS PONTOS DE CADA JOGADOR NA RODADA */
 
-	for(i=1; i<=jogadores;i++){
+	for(i=1; i<=players;i++){
 		
-		if(pontos[i] < n && pontos[i] >= 0){
+		if(pontos[i] < numero && pontos[i] >= 0){
 		cout << "\nJogador " << i << ", jogar os dois dados? [1/0]";
 		cin >> sn[i];
 		/** CRIAÇAO DO NUMERO ALEATORIO (OS 2 DADOS SOMADOS) */
@@ -65,7 +65,7 @@ int main(int argc, char const *argv[])
 		
 	}
 		/** VERIFICANDO QUAL A MAIOR PONTUAÇAO */
-		if(pontos[i] < n && pontos[i] > maior){
+		if(pontos[i] < numero && pontos[i] > maior){
 		
 			maior = pontos[i];
 			vencedor = i;
@@ -73,7 +73,7 @@ int main(int argc, char const *argv[])
 
 		/** VERIFICANDO QUAL A MENOR PONTUAÇAO */
 
-		if(pontos[i] < n && pontos[i] < menor){
+		if(pontos[i] < numero && pontos[i] < menor){
 		
 			menor = pontos[i];
 			ultimo = i;
@@ -81,7 +81,7 @@ int main(int argc, char const *argv[])
 
 		/** DESCLASSIFICAÇAO DO JOGADOR CASO A SOMA DOS DADOS JOGADOS ULTRAPASSE O VALOR LIMITE ESTABELECIDO */
 
-		if(pontos[i] > n || pontos[i] < 0){
+		if(pontos[i] > numero || pontos[i] < 0){
 			cout << "\nO jogador " << i << " foi desclassificado\n" << endl;
 			
 			contador_desclassificacao -= 1;
@@ -90,7 +90,7 @@ int main(int argc, char const *argv[])
 
 		/** CASO A SOMA DOS DADOS ATINJA O VALOR LIMITE ESTABELECIDO, O JOGADOR GANHA! */
 		
-		if(pontos[i] == n){
+		if(pontos[i] == numero){
 			cout << "\nO jogador " << i << " venceu o jogo!\n" << endl;
 			exit(0);
 
@@ -122,7 +122,7 @@ int main(int argc, char const *argv[])
 
 	/** IMPRESSAO DO VENCEDOR DA RODADA E FIM DA RODADA */
 	
-	if(pontos[vencedor] < n){
+	if(pontos[vencedor] < numero){
 	cout << "\nO vencedor da rodada foi o jogador " << vencedor << endl;
 	cout << "\n-------------------------FIM DA RODADA-------------------------\n" << endl;
 	}
